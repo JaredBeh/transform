@@ -12,15 +12,21 @@ def ident( matrix ):
         for r in range(4):
             if(r == c):
                 matrix[c][r]=1
-
+    return matrix
 def make_translate( x, y, z ):
     ans = ident(new_matrix())
     ans[3][0]=x
     ans[3][1]=y
     ans[3][2]=z
-
+    
+    return ans
 def make_scale( x, y, z ):
-    pass
+    ans = indent(new_matrix())
+    ans[0][0] = x
+    ans[1][1] = y
+    ans[2][2] = z
+
+    return ans
     
 def make_rotX( theta ):   
     pass
@@ -29,7 +35,13 @@ def make_rotY( theta ):
     pass
 
 def make_rotZ( theta ):
-    pass
+    ans = ident(new_matrix())
+    ans[0][0] = math.cos(math.radians(theta))
+    ans[1][0] = -1 * math.sin(math.radians(theta))
+    ans[0][1] = math.sin(math.radians(theta))
+    ans[1][1] = math.cos(math.radians(theta))
+
+    return ans
 
 def print_matrix( matrix ):
     ans = ""
