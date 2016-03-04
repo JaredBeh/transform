@@ -75,15 +75,26 @@ def scalar_mult( matrix, x ):
             matrix[c][r] *= x
     return matrix
 
+def row_mult(row,matrix,col):
+    ans = 0
+    for n in range(len(row)):
+        ans += row[n] * matrix[n][col]
+    return ans
+
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
+    ans = new_matrix()
     for r in range(len(m1)):
         for c in range(len(m2[0])):
-            
+            ans[r][c] = row_mult(m1[r],m2,c)
+    return ans
 
 #testing
-m = new_matrix()
+m = new_matrix(7,7)
+n = [0,0,0,0,0,0,0]
 m = make_translate(3,4,5)
 print_matrix(m)
 m = scalar_mult(m,2)
 print_matrix(m)
+#n = ident(new_matrix())
+print_matrix(matrix_mult(ident(new_matrix()),m))
