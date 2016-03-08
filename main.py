@@ -13,6 +13,8 @@ for n in range(200):
         master = make_rotZ(142)
     else:
         master = make_scale(2,2,1)
+    #master = matrix_mult(make_translate(3,3,0),make_rotZ(11))
+    edges = matrix_mult(edges,master)
     draw_lines(edges,screen,color)
     master = ident(new_matrix())
 

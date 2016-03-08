@@ -83,12 +83,13 @@ def row_mult(row,matrix,col):
 
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
-    ans = new_matrix()
+    ans = new_matrix(len(m1),len(m2[0]))
     for r in range(len(m1)):
         for c in range(len(m2[0])):
-            ans[r][c] = row_mult(m1[r],m2,c)
+            for n in range(len(m2)):
+                ans[r][c] += m1[r][n] * m2[n][c]
     return ans
-
+'''
 #testing
 m = new_matrix(7,7)
 n = [0,0,0,0,0,0,0]
@@ -98,3 +99,4 @@ m = scalar_mult(m,2)
 print_matrix(m)
 #n = ident(new_matrix())
 print_matrix(matrix_mult(ident(new_matrix()),m))
+'''
